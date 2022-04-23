@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 const defaultValue = 56.0;
 
-class Loader extends StatelessWidget {
+class FlutterOverlayLoader extends StatelessWidget {
   static OverlayEntry? _currentLoader;
-  Loader._(this._progressIndicator, this._themeData);
+  FlutterOverlayLoader._(this._progressIndicator, this._themeData);
   final Widget? _progressIndicator;
   final ThemeData? _themeData;
 
@@ -14,7 +14,7 @@ class Loader extends StatelessWidget {
   static bool get isShown => _currentLoader != null;
 
   /// If you need to show an normal overlayloader,
-  /// just call Loader.show() with a build context. BuildContext is a required param.
+  /// just call FlutterOverlayLoader.show() with a build context. BuildContext is a required param.
 
   static void show(BuildContext context,
       {
@@ -70,7 +70,7 @@ class Loader extends StatelessWidget {
                     ? 0.0
                     : overlayFromBottom ?? defaultPaddingBottom),
             Center(
-                child: Loader._(
+                child: FlutterOverlayLoader._(
               progressIndicator,
               themeData,
             )),
@@ -106,7 +106,7 @@ class Loader extends StatelessWidget {
 
   /// You have to call hide() method in the dispose method to clear
   ///  the overlay or hide your loader when your view is disposed otherwise throws an exception.
-  /// And also you have to call hide() method when you need to hide your overlay loader. For exmaple, After finishing your api call you need to hide your loader. then just call Loader.hide()
+  /// And also you have to call hide() method when you need to hide your overlay loader. For exmaple, After finishing your api call you need to hide your loader. then just call FlutterOverlayLoader.hide()
   static void hide() {
     if (_currentLoader != null) {
       try {
